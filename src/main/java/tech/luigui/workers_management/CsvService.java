@@ -13,6 +13,9 @@ public class CsvService {
 
 	List<InformacaoConta> readCsv(String path) throws IllegalStateException, FileNotFoundException {
 		return new CsvToBeanBuilder<InformacaoConta>(new FileReader(path))
-			       .withType(InformacaoConta.class).build().parse();
+			       .withType(InformacaoConta.class)
+			       .withSeparator(';')
+			       .build()
+			       .parse();
 	}
 }

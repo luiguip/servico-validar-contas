@@ -48,4 +48,12 @@ public class InformacaoConta {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "InformacaoConta [agencia=" + agencia + ", conta=" + conta + ", saldo=" + saldo + ", status=" + status
+				+ "]";
+	}
+	
+	
 }
