@@ -29,7 +29,7 @@ public class DesafioDbApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		try {
-			var argument = recoverArgument(args);
+			var argument = recuperarArgumento(args);
 			informacaoContaService.proccess(argument);
 		} catch(RequiredArgumentException rae) {
 			LOG.error("Argumento com o caminho do csv necessário!");
@@ -41,7 +41,7 @@ public class DesafioDbApplication implements CommandLineRunner{
 				
 	}
 	
-	private String recoverArgument(String... args) throws RequiredArgumentException{
+	private String recuperarArgumento(String... args) throws RequiredArgumentException{
 		if(args.length == 0) {
 			throw new RequiredArgumentException();
 		}

@@ -17,6 +17,13 @@ public class InformacaoConta {
 	public InformacaoConta() {
 	}
 
+	public InformacaoConta(String agencia, String conta, BigDecimal saldo, String status) {
+		this.agencia = agencia;
+		this.conta = conta;
+		this.saldo = saldo;
+		this.status = status;
+	}
+
 	public String getAgencia() {
 		return agencia;
 	}
