@@ -21,7 +21,7 @@ public class InformacaoContaService {
 	
 	private static Logger log = LoggerFactory.getLogger(InformacaoContaService.class);
 	
-	public void proccess(String path) throws IllegalStateException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+	public void processar(String path) throws IllegalStateException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		var informacaoContaList = csvService.readCsv(path);
 		var informacaoContaAtualizadaList = informacaoContaList.parallelStream()
 				.map(this::atualizarConta)
@@ -30,7 +30,7 @@ public class InformacaoContaService {
 	}
 	
 	private InformacaoContaAtualizada atualizarConta(InformacaoConta informacaoConta) {
-		var informacaoContaFormatada = preprocessInformacaoConta(informacaoConta);
+		var informacaoContaFormatada = preprocessarInformacaoConta(informacaoConta);
 		while(true) {
 			try {
 				var atualizada = receitaService.atualizarConta(
@@ -49,7 +49,7 @@ public class InformacaoContaService {
 		}
 	}
 	
-	private InformacaoConta preprocessInformacaoConta(InformacaoConta informacaoConta) {
+	private InformacaoConta preprocessarInformacaoConta(InformacaoConta informacaoConta) {
 		var informacaoContaFormatada = new InformacaoConta(
 				informacaoConta.getAgencia(),
 				informacaoConta.getConta(),
