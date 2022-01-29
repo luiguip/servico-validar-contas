@@ -61,6 +61,4 @@ public class InformacaoConta {
 		return "InformacaoConta [agencia=" + agencia + ", conta=" + conta + ", saldo=" + saldo + ", status=" + status
 				+ "]";
 	}
-	
-	
 }

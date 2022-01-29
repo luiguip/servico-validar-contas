@@ -1,11 +1,15 @@
 package tech.luigui.workers_management;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 @Service
 public class InformacaoContaService {
@@ -18,12 +22,12 @@ public class InformacaoContaService {
 	
 	private static Logger log = LoggerFactory.getLogger(InformacaoContaService.class);
 	
-	public void proccess(String path) throws IllegalStateException, FileNotFoundException {
+	public void proccess(String path) throws IllegalStateException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		var informacaoContaList = csvService.readCsv(path);
 		var informacaoContaAtualizadaList = informacaoContaList.stream()
 				.map(this::atualizarConta)
 				.toList();
-		informacaoContaAtualizadaList.forEach(System.out::println);	
+		csvService.writeCsv(informacaoContaAtualizadaList);	
 	}
 	
 	private InformacaoContaAtualizada atualizarConta(InformacaoConta informacaoConta) {
@@ -43,9 +47,14 @@ public class InformacaoContaService {
 	}
 	
 	private InformacaoConta preprocessInformacaoConta(InformacaoConta informacaoConta) {
-		var campo = formatarCampoConta(informacaoConta.getConta());
-		informacaoConta.setConta(campo);
-		return informacaoConta;
+		var informacaoContaFormatada = new InformacaoConta(
+				informacaoConta.getAgencia(),
+				informacaoConta.getConta(),
+				informacaoConta.getSaldo(),
+				informacaoConta.getStatus());
+		var campo = formatarCampoConta(informacaoContaFormatada.getConta());
+		informacaoContaFormatada.setConta(campo);
+		return informacaoContaFormatada;
 	}
 	
 	private String formatarCampoConta(String conta) {
