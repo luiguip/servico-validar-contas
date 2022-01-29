@@ -1,6 +1,5 @@
 package tech.luigui.workers_management;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.slf4j.Logger;
@@ -24,7 +23,7 @@ public class InformacaoContaService {
 	
 	public void proccess(String path) throws IllegalStateException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
 		var informacaoContaList = csvService.readCsv(path);
-		var informacaoContaAtualizadaList = informacaoContaList.stream()
+		var informacaoContaAtualizadaList = informacaoContaList.parallelStream()
 				.map(this::atualizarConta)
 				.toList();
 		csvService.writeCsv(informacaoContaAtualizadaList);	
@@ -39,9 +38,13 @@ public class InformacaoContaService {
 						informacaoContaFormatada.getConta(),
 						informacaoContaFormatada.getSaldo().doubleValue(), 
 						informacaoContaFormatada.getStatus());
+				log.info("Conta atualizada {}", informacaoConta);
 				return InformacaoContaAtualizada.gerarInformacaoContaAtualizada(informacaoConta, atualizada);
-			} catch (RuntimeException | InterruptedException e) {
-				log.error("Erro ReceitaService: {}", informacaoContaFormatada);
+			} catch(InterruptedException ie) {
+				log.error("Erro ReceitaService: {}", informacaoConta);
+				Thread.currentThread().interrupt();
+			} catch(RuntimeException re) {
+				log.error("Erro ReceitaService: {}", informacaoConta);
 			}
 		}
 	}

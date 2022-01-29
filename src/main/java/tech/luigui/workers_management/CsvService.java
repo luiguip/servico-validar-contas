@@ -31,11 +31,8 @@ public class CsvService {
 	public void writeCsv(List<InformacaoContaAtualizada> informacaoContaAtualizadaList)
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 		var writer = new FileWriter("contas-validadas.csv");
-		var order = new String[] { "agencia", "conta", "saldo", "status", "processado" };
-		var comparator = new LiteralComparator<String>(order);
 		var strategy = new HeaderColumnNameMappingStrategyBuilder<InformacaoContaAtualizada>().build();
 		strategy.setType(InformacaoContaAtualizada.class);
-		strategy.setColumnOrderOnWrite(comparator);
 		var beanToCsv = new StatefulBeanToCsvBuilder<InformacaoContaAtualizada>(writer).withMappingStrategy(strategy)
 				.build();
 		beanToCsv.write(informacaoContaAtualizadaList);
