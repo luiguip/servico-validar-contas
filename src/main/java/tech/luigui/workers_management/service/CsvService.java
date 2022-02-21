@@ -1,4 +1,4 @@
-package tech.luigui.workers_management;
+package tech.luigui.workers_management.service;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

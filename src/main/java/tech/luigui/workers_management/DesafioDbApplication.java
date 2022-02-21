@@ -15,6 +15,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import tech.luigui.workers_management.exception.RequiredArgumentException;
+import tech.luigui.workers_management.service.InformacaoContaService;
 
 @SpringBootApplication
 public class DesafioDbApplication implements CommandLineRunner{

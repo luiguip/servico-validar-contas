@@ -1,4 +1,4 @@
-package tech.luigui.workers_management;
+package tech.luigui.workers_management.service;
 
 import java.util.ArrayList;
 import java.util.List;
