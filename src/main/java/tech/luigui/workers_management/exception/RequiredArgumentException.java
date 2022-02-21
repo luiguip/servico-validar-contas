@@ -1,4 +1,4 @@
-package tech.luigui.workers_management;
+package tech.luigui.workers_management.exception;
 
 public class RequiredArgumentException extends RuntimeException{
 

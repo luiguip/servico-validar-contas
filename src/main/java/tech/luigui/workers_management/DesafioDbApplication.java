@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import tech.luigui.workers_management.exception.RequiredArgumentException;
+
 @SpringBootApplication
 public class DesafioDbApplication implements CommandLineRunner{
 	
