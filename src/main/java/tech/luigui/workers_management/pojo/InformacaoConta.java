@@ -1,4 +1,4 @@
-package tech.luigui.workers_management;
+package tech.luigui.workers_management.pojo;
 
 import java.math.BigDecimal;
 

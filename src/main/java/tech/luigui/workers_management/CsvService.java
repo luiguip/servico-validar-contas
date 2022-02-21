@@ -20,6 +20,9 @@ import com.opencsv.bean.comparator.LiteralComparator;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
+import tech.luigui.workers_management.pojo.InformacaoConta;
+import tech.luigui.workers_management.pojo.InformacaoContaAtualizada;
+
 @Service
 public class CsvService {
 
