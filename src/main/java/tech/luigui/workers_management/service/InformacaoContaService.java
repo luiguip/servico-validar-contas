@@ -17,10 +17,10 @@ import tech.luigui.workers_management.pojo.InformacaoContaAtualizada;
 public class InformacaoContaService {
 	
 	@Autowired
-	CsvService csvService;
+	private CsvService csvService;
 	
 	@Autowired
-	ReceitaService receitaService;
+	private ReceitaService receitaService;
 	
 	private static Logger log = LoggerFactory.getLogger(InformacaoContaService.class);
 	
