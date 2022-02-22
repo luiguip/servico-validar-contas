@@ -32,9 +32,8 @@ public class InformacaoContaService {
 		csvService.writeCsv(informacaoContaAtualizadaList);	
 	}
 	
-	private InformacaoContaAtualizada atualizarConta(InformacaoConta informacaoConta) {
+	public InformacaoContaAtualizada atualizarConta(InformacaoConta informacaoConta) {
 		var informacaoContaFormatada = preprocessarInformacaoConta(informacaoConta);
-		while(true) {
 			try {
 				var atualizada = receitaService.atualizarConta(
 						informacaoContaFormatada.getAgencia(),
@@ -42,14 +41,14 @@ public class InformacaoContaService {
 						informacaoContaFormatada.getSaldo().doubleValue(), 
 						informacaoContaFormatada.getStatus());
 				log.info("Conta atualizada {}", informacaoConta);
-				return InformacaoContaAtualizada.gerarInformacaoContaAtualizada(informacaoConta, atualizada);
+				return InformacaoContaAtualizada.gerarInformacaoContaAtualizada(informacaoConta, atualizada, false);
 			} catch(InterruptedException ie) {
 				log.error("Erro ReceitaService: {}", informacaoConta);
 				Thread.currentThread().interrupt();
 			} catch(RuntimeException re) {
 				log.error("Erro ReceitaService: {}", informacaoConta);
 			}
-		}
+		return InformacaoContaAtualizada.gerarInformacaoContaAtualizada(informacaoConta, null, true);
 	}
 	
 	private InformacaoConta preprocessarInformacaoConta(InformacaoConta informacaoConta) {
