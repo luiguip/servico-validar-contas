@@ -1,6 +1,7 @@
 package tech.luigui.workers_management.pojo;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -44,6 +45,26 @@ public class InformacaoContaAtualizada extends InformacaoConta {
 				informacaoConta.getStatus(), 
 				processado,
 				erro);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(erro, processado);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InformacaoContaAtualizada other = (InformacaoContaAtualizada) obj;
+		return Objects.equals(erro, other.erro) && Objects.equals(processado, other.processado);
 	}
 
 	@Override
