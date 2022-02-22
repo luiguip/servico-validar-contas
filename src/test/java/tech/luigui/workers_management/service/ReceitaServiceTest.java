@@ -1,4 +1,4 @@
-package tech.luigui.workers_management;
+package tech.luigui.workers_management.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
