@@ -1,6 +1,7 @@
 package tech.luigui.workers_management.pojo;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -54,6 +55,24 @@ public class InformacaoConta {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(agencia, conta, saldo, status);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InformacaoConta other = (InformacaoConta) obj;
+		return Objects.equals(agencia, other.agencia) && Objects.equals(conta, other.conta)
+				&& Objects.equals(saldo, other.saldo) && Objects.equals(status, other.status);
 	}
 
 	@Override
