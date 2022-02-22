@@ -24,7 +24,7 @@ public class InformacaoContaService {
 	
 	private static Logger log = LoggerFactory.getLogger(InformacaoContaService.class);
 	
-	public void processar(String path) throws IllegalStateException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException {
+	public void processar(String path) {
 		var informacaoContaList = csvService.readCsv(path);
 		var informacaoContaAtualizadaList = informacaoContaList.parallelStream()
 				.map(this::atualizarConta)
@@ -43,10 +43,10 @@ public class InformacaoContaService {
 				log.info("Conta atualizada {}", informacaoConta);
 				return InformacaoContaAtualizada.gerarInformacaoContaAtualizada(informacaoConta, atualizada, false);
 			} catch(InterruptedException ie) {
-				log.error("Erro ReceitaService: {}", informacaoConta);
+				log.error("InterruptionsException ReceitaService: {}", informacaoConta);
 				Thread.currentThread().interrupt();
 			} catch(RuntimeException re) {
-				log.error("Erro ReceitaService: {}", informacaoConta);
+				log.error("RuntimeException ReceitaService: {}", informacaoConta);
 			}
 		return InformacaoContaAtualizada.gerarInformacaoContaAtualizada(informacaoConta, null, true);
 	}
