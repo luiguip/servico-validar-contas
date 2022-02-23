@@ -22,3 +22,6 @@ O sistema recupera os dados do csv, realiza o pré-processamento e utiliza um pa
 Quando finalizada a atualização de todas contas, o resultado é salvo em um novo csv.
 
 O csv com as atualizações possui uma coluna que indica se ocorreu um erro ao atualizar a conta.
+
+## Débitos técnicos
+* O csv salvo não tem virgula quando o número for inteiro, na coluna de saldo.
