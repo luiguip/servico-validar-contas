@@ -3,12 +3,19 @@
 Versão do Java: 17
 
 ## Como realizar o build do jar?
-1. ./mvnw package.
-2. O jar vai estar localizado na pasta target.
+```
+./mvnw package
+```
+O jar vai estar localizado na pasta target.
 
 ## Como executar?
 ```
 	java -jar desafio-db-0.0.2-SNAPSHOT.jar caminho/do/arquivo.csv
+```
+
+## Como executar os testes?
+```
+./mvnw test
 ```
 
 ## Estrutura do Projeto
