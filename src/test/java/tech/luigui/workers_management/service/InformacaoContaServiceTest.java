@@ -27,7 +27,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import tech.luigui.workers_management.pojo.InformacaoConta;
 import tech.luigui.workers_management.pojo.InformacaoContaAtualizada;
 
-@SpringBootTest
+@SpringBootTest(args="src/main/resources/data.csv")
 class InformacaoContaServiceTest {
 
 	@MockBean
@@ -45,7 +45,6 @@ class InformacaoContaServiceTest {
 	private InformacaoContaAtualizada informacaoContaAtualizada;
 	private InformacaoContaAtualizada informacaoContaAtualizadaComErro;
 	private List<InformacaoConta> informacaoContaList;
-	private List<InformacaoContaAtualizada> informacaoContaAtualizadaList;
 	
 	@BeforeEach
 	void beforeEach() {
