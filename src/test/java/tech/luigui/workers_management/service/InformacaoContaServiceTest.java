@@ -69,7 +69,7 @@ class InformacaoContaServiceTest {
 			.writeCsv(anyList());
 		informacaoContaService.processar("");
 		verify(csvService, times(1)).readCsv("");
-		verify(csvService, times(1)).writeCsv(anyList());
+		verify(csvService, times(2)).writeCsv(anyList());
 	}
 
 	@Test
